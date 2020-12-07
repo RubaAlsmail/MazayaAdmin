@@ -1,0 +1,6 @@
+.bg-gradient-primary {
+  background-color: #38A089;
+  background-image: linear-gradient(to bottom, #38a089, var(--dark-blue-green));
+  background-size: cover;
+}
+

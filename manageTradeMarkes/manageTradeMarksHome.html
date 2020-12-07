@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title font-family: Frutiger LT Arabic;>إدارةالعلامات التجارية</title>
+    
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/fonts/typicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/format.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper" style="background: #00524d;">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: linear-gradient(#38a089, #00524d);margin-top: 70px;">
+            <div class="container-fluid d-flex flex-column p-0"><img src="assets/img/Logo.png" style="margin-right: 30px;margin-bottom: 30px;margin-left: 3px;margin-top: 9px;width: 118px;">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="index.html" style="text-align: center;padding: 24px;"><i class="fa fa-user" style="margin-left: 6px;margin-right: 80px;font-size: 20px;"></i><span style="margin-right: 3px;margin-left: 0px;font-family: FrutigerLTArabic-65;">إدارة الموظفين</span></a></li>
+                    <li
+                        class="nav-item" style="text-align: left;"><a class="nav-link" href="profile.html" style="text-align: center;margin-bottom: 6px;"><i class="fa fa-trademark" style="margin-right: 31px;font-size: 20px;"></i><span style="margin-left: 7px;margin-right: 0px;font-family: FrutigerLTArabic-65;">إدارة العلامات التجارية</span></a></li>
+                        <li
+                            class="nav-item" style="text-align: left;"><a class="nav-link" href="table.html" style="text-align: center;font-family: FrutigerLTArabic-65;"><i class="fa fa-clock-o" style="padding-right: 22px;margin-right: 17px;font-size: 20px;"></i><span style="font-family: FrutigerLTArabic-65;">العروض قريبة الانتهاء</span></a></li>
+                            <li
+                                class="nav-item" style="text-align: left;"></li>
+                                <li class="nav-item" style="text-align: left;"><a class="nav-link" href="register.html" style="text-align: center;margin-left: 23px;padding: 13px;padding-top: 15px;padding-right: 47px;font-family: FrutigerLTArabic-65;"><i class="typcn typcn-star-half-outline" style="margin-right: 144px;font-size: 20px;margin-left: -5px;"></i><span style="margin-left: -42px;">التقييمات&nbsp;</span></a>
+                                    <a
+                                        class="nav-link" href="register.html" style="text-align: center;margin-left: 23px;padding: 13px;padding-top: 15px;padding-right: 24px;font-family: FrutigerLTArabic-65;"><i class="la la-comment-o" style="margin-right: 133px;font-size: 20px;margin-left: -24px;"></i><span style="margin-right: 9px;margin-left: -26px;">أقتراحات</span></a>
+                                </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-dark shadow mb-4 topbar static-top" style="background: linear-gradient(black, #00524d 0%, #00524d);margin-left: -33px;">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                           
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i onclick="logout()" class="icon-logout fa-fw"></i><span class="badge badge-danger badge-counter"></span></a>
+                                  
+                              
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><img src="assets/img/Logo.png" style="width: 46px;height: 40.5px;"></a>
+                                    </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <h1 style="text-align: right;color: #38a089; font-family: Frutiger LT Arabic;">الفئات<i class="typcn typcn-minus" style="margin-left: 21px;color: #00524d;"></i></h1>
+                                </div>
+                            </div>
+                            <div class="table-responsive table-borderless" style="text-align: center;margin-top: 20px;">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th><button class="btn btn-primary cards" onclick="showTradeMarkes('السفر')" type="button" style="background: url(assets/img/Group%209959.png) center / cover;"></button></th>
+                                            <th><button class="btn btn-primary cards" onclick="showTradeMarkes('المدارس')" type="button" style="background: url(assets/img/Group%209972%20.png) center / cover;"></button></th>
+                                            <th><button class="btn btn-primary cards" onclick="showTradeMarkes('المنزل')" type="button" style="background: url(assets/img/Group%209948.png) center / cover;"></button></th>
+                                            <th ><button class="btn btn-primary cards " onclick="showTradeMarkes('الإلكترونيات')" type="button" style="background: url(assets/img/Group%209953.png) center / cover;"></button></th>
+                                            <th ><button class="btn btn-primary cards" onclick="showTradeMarkes('التسوق')"type="button" style="background: url(assets/img/Group%209952.png) center / cover;"></button></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                           
+                            <div class="table-responsive table-borderless text-center" style="margin-top: -21px;">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th ><br><button class="btn btn-primary cards" onclick="showTradeMarkes('الكل')" type="button" style="background: url(assets/img/Group%209989.png) center / cover;"></button></th>
+
+                                            <th ><br><button class="btn btn-primary cards" onclick="showTradeMarkes('الاغذية')" type="button" style="background: url(assets/img/Group%209951.png) center / cover;"></button></th>
+                                            <th><button class="btn btn-primary cards" type="button" onclick="showTradeMarkes('الخدمات')" style="background: url(assets/img/Group%209957.png) center / cover;"></button></th>
+                                            <th><button class="btn btn-primary cards" type="button" onclick="showTradeMarkes('السيارات')" style="background: url(assets/img/Group%209955.png) center / cover;"></button></th>
+                                            <th><button class="btn btn-primary cards" type="button" onclick="showTradeMarkes('الصحة واللياقة')" style="background: url(assets/img/Group%209954.png) center / cover;"></button></th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr></tr>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid" style="display: none;"id="category-container">
+                    
+                    <div class="card shadow">
+                        <div class="card-header py-3" style="background: #00524d;">
+                            <h6 id="catheader" style="color: #ffffff;font-size: 30px;font-family: Frutiger LT Arabic;text-align: right;font-weight: bold;"></h6>
+                        </div>
+                        <div class="card-body">
+                            
+                            <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;font-family: Frutiger LT Arabic; ">حذف</th>
+                                            <th style="text-align: center;font-family: Frutiger LT Arabic;">تعديل</th>
+                                            <th style="text-align: center;font-family: Frutiger LT Arabic;">عرض</th>
+                                            <th style="text-align: center;font-family: Frutiger LT Arabic;">عدد العروض</th>
+                                            <th style="text-align: center;font-family: Frutiger LT Arabic;">عدد الفروع</th>
+                                            <th style="text-align: center;font-family: Frutiger LT Arabic;">العلامة التجارية</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bodyOftable">
+                                        <tr>
+                                            <td class="btncel"><button class=" btn deletebtn" type="button" >حذف<i class="far fa-trash-alt deleteIcon "></i></button></td>
+                                            <td class="btncel"><button class="btn editbtn " type="button" >تعديل<i class="ion-android-create editIcon" ></i></button></td>
+                                            <td class="btncel"><button class="btn viewbtn " type="button" >عرض</button></td>
+                                            <td style="margin-right: 11px;"><button class="btn viewbtn " type="button" >إضافة<i class="icon ion-ios-eye" style="margin-left: 5px;margin-top: -5px;font-size: 20px;"></i></button></td>
+
+                                            <td class="infocel">10</td>
+                                            <td class="infocel">11</td>
+                                            <td class="infocel" >انوش<img class="rounded-circle mr-2 imageTrade"   src="assets/img/avatars/avatar1.jpeg" ></td>
+                                        </tr>
+                                      
+
+                                    </tbody>
+                                   
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="back.js"></script>
+</body>
+
+</html>
