@@ -451,7 +451,7 @@ function login() {
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
-    alert("البريد الالكترروني او الرقم السري خاطئ");
+    alert("البريد الالكترروني أو الرقم السري خاطئ");
   });
 
   }
