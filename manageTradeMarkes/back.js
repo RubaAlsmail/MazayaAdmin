@@ -603,7 +603,7 @@ viewbtn.onclick=function(){
    trademarkEmail.className='cells';
    trademarkEmail.textContent=snapshot1.child("contactEmailAddress").val();
    trademarkEmail.onclick=function(){
-     contactSugg(trademarkEmail,snapshot1.child("contactEmailAddress").val());
+     contactSugg(snapshot1.child("contactEmailAddress").val());
    }
 
    var trademarkContactNum = document.createElement('td');
@@ -650,7 +650,7 @@ document.getElementById("dataTable").deleteRow(1);
       window.location.reload();     
       }
     }
-  function contactSugg(btn,email){
+  function contactSugg(email){
     window.location.href='mailto:'+email;
     
   }
