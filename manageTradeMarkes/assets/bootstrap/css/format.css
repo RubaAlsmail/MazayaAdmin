@@ -181,7 +181,9 @@
     font-family: Frutiger LT Arabic;
   
   }
-
+  .map {
+    height: 100%;
+  }
   .imageTrade{
     margin-left: 5px;
     height: 40px;

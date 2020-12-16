@@ -18,6 +18,7 @@ const firebaseConfig = {
  
 
 
+
   if(window.location.href=="http://127.0.0.1:5500/manageEmployees.html"){
     displayusers();
   }
@@ -101,7 +102,6 @@ function viewTradeMarks(){
    var noPointcel = document.createElement('td');
     noPointcel.className='cells';
     noPointcel.textContent=snapshot1.child("points").val();
-
 
    var gendercel = document.createElement('td');
     gendercel.className='cells';
@@ -211,7 +211,7 @@ function viewTradeMarks(){
         newrow.appendChild(gendercel);
         newrow.appendChild(phonecel);
         newrow.appendChild(namecel);
-        document.getElementById('bodytable').appendChild(newrow);
+        document.getElementById('tableBody').appendChild(newrow);
         
     
     
@@ -550,3 +550,124 @@ return;
   console.log(accountsnap);
   
 }// end function 
+
+
+
+function suggestion ()
+{
+  var trademarkCategory=document.getElementById("Category").value;
+  var trademarkEmail=document.getElementById("Email").value;
+  var trademarkContactNum=document.getElementById("ContactNum").value;
+  var trademarkName=document.getElementById("TrademarkNmae").value;
+
+    firebase.database().ref('Suggestion').once('value').then(function(snapshot) {
+        
+      snapshot.forEach(function(snapshot1) {
+
+         
+   var newrow = document.createElement('tr');
+//delete sugg
+  var  deletecel = document.createElement('td');
+    deletecel.className='deletecel';
+   var deletebtn = document.createElement('button');
+    deletebtn.className='btn btn-danger';
+    deletebtn.textContent="حذف";
+    deletebtn.onclick=function(){
+      deleteSugg(snapshot1.key);
+    };
+
+//contact sugg
+// var  contactcel = document.createElement('td');
+// contactcel.className='contactcel';
+// var contactbtn = document.createElement('button');
+// contactbtn.className='buttons btn btn-primary';
+// contactbtn.textContent="تواصل";
+// contactbtn.onclick=function(){
+//   contactSugg(snapshot1,snapshot1.key);
+// };
+//view sugg
+var  viewcel = document.createElement('td');
+viewcel.className='viewcel';
+var viewbtn = document.createElement('button');
+viewbtn.className='buttons btn btn-primary';
+viewbtn.textContent="عرض ";
+viewbtn.onclick=function(){
+ viewSugg(snapshot1.child("employeeNotes").val());
+};
+
+
+   var trademarkCategory = document.createElement('td');
+   trademarkCategory.className='cells';
+   trademarkCategory.textContent=snapshot1.child("categoryName").val();
+
+   var trademarkEmail = document.createElement('td');
+   trademarkEmail.className='cells';
+   trademarkEmail.textContent=snapshot1.child("contactEmailAddress").val();
+   trademarkEmail.onclick=function(){
+     contactSugg(snapshot1.child("contactEmailAddress").val());
+   }
+
+   var trademarkContactNum = document.createElement('td');
+   trademarkContactNum.className='cells';
+   trademarkContactNum.textContent=snapshot1.child("contactNumber").val();
+
+   var trademarkName = document.createElement('td');
+   trademarkName.className='cells';
+   trademarkName.textContent=snapshot1.child("trademarkName").val();
+
+
+    
+    deletecel.appendChild(deletebtn);
+    newrow.appendChild(deletecel);
+    // contactcel.appendChild(contactbtn);
+    // newrow.appendChild(contactbtn);
+    viewcel.appendChild(viewbtn);
+    newrow.appendChild(viewcel);
+
+    newrow.appendChild(trademarkEmail);
+    newrow.appendChild(trademarkContactNum);
+    newrow.appendChild(trademarkCategory);
+    newrow.appendChild(trademarkName);
+
+    document.getElementById('tableBody').appendChild(newrow);
+
+   });
+  
+});
+document.getElementById("dataTable").deleteRow(1);
+
+  
+  }//end sugg
+
+  function deleteSugg(uid){
+    var conf =confirm("هل أنت متأكد من حذف الاقتراح؟");
+    if (conf==true){//true
+     firebase.database.ref('Suggestion').child(uid).remove();
+      alert('تم حذف الاقتراح');
+      reload_page();
+      }
+      
+      function reload_page() { 
+      window.location.reload();     
+      }
+    }
+  function contactSugg(email){
+    window.location.href='mailto:'+email;
+    
+  }
+
+  function viewSugg(uid){
+    if (uid=="")
+   alert("لا يوجد تفاصيل");
+   else
+   alert(uid);
+  }
+
+
+
+
+  
+
+
+
+
